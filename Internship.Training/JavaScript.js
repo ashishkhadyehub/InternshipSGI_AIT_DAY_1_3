@@ -1,0 +1,1 @@
+﻿comsole.log("JS in asp.net")
