@@ -10,9 +10,9 @@
             </div>
             <div class="col-md-8">
                 <div class="table-responsive">
-                    <asp:GridView ID="gvEmployees" CssClass="table table-striped" runat="server" AutoGenerateColumns="false" EmptyDataText="No data found">
+                    <asp:GridView ID="gvEmployees" CssClass="table table-striped" runat="server" AutoGenerateColumns="true" EmptyDataText="No data found">
                         <Columns>
-                            <asp:TemplateField HeaderText="Employee-Id" ItemStyle-Width="150">
+                           <%-- <asp:TemplateField HeaderText="Employee-Id" ItemStyle-Width="150">
                                 <ItemTemplate>
                                     <asp:Label  runat="server" Text='<%# Eval("Srno") %>'></asp:Label>
                                 </ItemTemplate>
@@ -41,7 +41,7 @@
                                     <asp:Label ID="lbldept" runat="server" Text='<%# Eval("Department") %>'></asp:Label>
                                 </ItemTemplate>
 
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="View Details">
 
                                 <ItemTemplate>

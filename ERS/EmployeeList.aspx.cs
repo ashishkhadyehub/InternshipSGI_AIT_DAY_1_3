@@ -22,7 +22,7 @@ namespace ERS
         DataSet GetList()
         {
             con.Close();
-            SqlCommand cmd = new SqlCommand("select * from EmpRegister order by Srno desc",con);
+            SqlCommand cmd = new SqlCommand("select Srno,Name,Contact,Email,Department from EmpRegister order by Srno desc",con);
             con.Open();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
