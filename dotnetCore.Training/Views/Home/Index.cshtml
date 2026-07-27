@@ -1,4 +1,4 @@
-﻿@model Student
+﻿@model List<Student>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,9 +7,13 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-   </div>
-   <ul>
-       <li>Roll No: @Model.Id</li>
-       <li>Name: @Model.Name</li>
-       <li>City: @Model.City</li>
-   </ul>
+</div>
+@foreach (var student in Model)
+{
+    <ul>
+        <li>Roll No: @student.Id</li>
+        <li>Name: @student.Name</li>
+        <li>City: @student.City</li>
+    </ul>
+}
+   
