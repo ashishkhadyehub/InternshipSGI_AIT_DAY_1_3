@@ -12,6 +12,7 @@ namespace dotnetCore.Training.Data
             
         }
 
+        //tables
         public DbSet<Student> Students { get; set; }
 
 
