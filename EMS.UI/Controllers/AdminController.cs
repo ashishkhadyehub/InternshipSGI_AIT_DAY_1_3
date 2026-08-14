@@ -8,11 +8,47 @@ namespace EMS.UI.Controllers
     {
         private readonly IDeptRepo _deptRepo;
         private readonly IBranchRepo _branchRepo;
-
-        public AdminController(IDeptRepo deptRepo, IBranchRepo branchRepo)
+        private readonly IAdminRepo _adminRepo;
+        public AdminController(IDeptRepo deptRepo, IBranchRepo branchRepo, IAdminRepo adminRepo)
         {
             _deptRepo = deptRepo;
             _branchRepo = branchRepo;
+            _adminRepo = adminRepo;
+        }
+
+        public IActionResult Index()
+        {
+            var employeeList = _adminRepo.GetAll();
+            return View(employeeList);
+        }
+
+        public IActionResult ApplicationList()
+        {
+
+            var applications = _adminRepo.GetAllApplications();
+
+            return View(applications);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var app = _adminRepo.GetById(id);
+            return View(app);
+        }
+
+        [HttpPost]
+        public IActionResult ApproveApp(LeaveApplication application)
+        {
+            _adminRepo.UpdateApplication(application.Id, "Approved");
+            return RedirectToAction("ApplicationList");
+
+        }
+        [HttpPost]
+        public IActionResult RejectApp(LeaveApplication application)
+        {
+            _adminRepo.UpdateApplication(application.Id, "Rejected");
+            return RedirectToAction("ApplicationList");
+
         }
 
         public IActionResult BranchList()
@@ -125,9 +161,6 @@ namespace EMS.UI.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }
